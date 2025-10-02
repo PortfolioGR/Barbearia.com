@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Premium | Orçamento Personalizado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-dark: #121212;
+            --color-dark-secondary: #1e1e1e;
+            --color-light: #f5f5f5;
+            --color-accent: #e74c3c;
+            --color-accent-hover: #c0392b;
+            --color-gray: #888888;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            filter: brightness(0) invert(1); /* Torna a logo branca */
+        }
+        
+        .logo h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            margin-left: 10px;
+            letter-spacing: 1px;
+            color: var(--color-light);
+        }
+        
+        .cta-button {
+            background-color: var(--color-accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--color-accent-hover);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .hero-cta {
+            margin-top: 30px;
+        }
+        
+        .hero-cta .cta-button {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+        
+        .benefits-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px 0;
+        }
+        
+        .benefits-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: center;
+        }
+        
+        .benefit-icon {
+            background-color: rgba(231, 76, 60, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .benefit-icon svg {
+            width: 25px;
+            height: 25px;
+            color: var(--color-accent);
+        }
+        
+        .benefit-text h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .benefit-text p {
+            font-size: 0.8rem;
+            color: var(--color-gray);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--color-dark-secondary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-icon {
+            background-color: rgba(231, 76, 60, 0.1);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .service-icon svg {
+            width: 35px;
+            height: 35px;
+            color: var(--color-accent);
+        }
+        
+        .service-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .service-price {
+            color: var(--color-accent);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-description {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-card .cta-button {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            background-color: var(--color-dark);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Location Section */
+        .location {
+            padding: 80px 0;
+            background-color: var(--color-dark-secondary);
+        }
+        
+        .location-flex {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .map-container {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .map-frame {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+        
+        .location-info {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 30px;
+        }
+        
+        .info-block {
+            margin-bottom: 30px;
+        }
+        
+        .info-block:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-block h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-block h3 svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            color: var(--color-accent);
+        }
+        
+        .info-block p {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .hours-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-table tr.current-day {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+        
+        .hours-table td {
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .hours-table td:last-child {
+            text-align: right;
+        }
+        
+        /* Budget Section */
+        .budget {
+            padding: 80px 0;
+            background-color: var(--color-accent);
+            color: white;
+        }
+        
+        .budget-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .budget-title {
+            margin-bottom: 40px;
+        }
+        
+        .budget-title h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        
+        .budget-title p {
+            font-size: 1.1rem;
+        }
+        
+        .budget-form {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 30px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.9);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 35px;
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background-color: white;
+            color: var(--color-accent);
+            border: none;
+            border-radius: 4px;
+            padding: 14px 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+        
+        .submit-button:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+        
+        .submit-button:active {
+            transform: translateY(0);
+        }
+        
+        .guarantee {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .guarantee svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-dark);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            filter: brightness(0) invert(1); /* Torna a logo branca */
+        }
+        
+        .footer-contact {
+            margin-bottom: 20px;
+        }
+        
+        .footer-contact p {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .footer-contact strong {
+            color: var(--color-light);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-light);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+        
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .copyright {
+            color: var(--color-gray);
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .location-flex {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .benefits-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .benefits-bar {
+                position: relative;
+                padding: 30px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="5" fill="#e74c3c"/>
+                    <path d="M26 15H14V17H26V15Z" fill="white"/>
+                    <path d="M26 19H14V21H26V19Z" fill="white"/>
+                    <path d="M20 23H14V25H20V23Z" fill="white"/>
+                </svg>
+                <h1>BARBEARIA PREMIUM</h1>
+            </div>
+            <a href="#orcamento" class="cta-button">Solicitar Orçamento</a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Experiência Premium em Barbearia</h2>
+                <p>Cortes exclusivos, ambiente sofisticado e atendimento personalizado para homens que valorizam estilo e qualidade.</p>
+                <div class="hero-cta">
+                    <a href="#orcamento" class="cta-button">Solicitar Orçamento</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="benefits-bar">
+            <div class="container benefits-container">
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Profissionais Premiados</h3>
+                        <p>Barbeiros com reconhecimento nacional</p>
+                    </div>
+                </div>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                        </svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Ambiente Exclusivo</h3>
+                        <p>Conforto e privacidade garantidos</p>
+                    </div>
+                </div>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Produtos Premium</h3>
+                        <p>Utilizamos as melhores marcas</p>
+                    </div>
+                </div>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Orçamento Online</h3>
+                        <p>Praticidade na hora de solicitar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="servicos" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Corte Masculino</h3>
+                    <div class="service-price">R$ 60</div>
+                    <p class="service-description">Corte personalizado com acabamento perfeito e lavagem incluída. Duração: 40 min.</p>
+                    <a href="#orcamento" class="cta-button">Solicitar Orçamento</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Barba</h3>
+                    <div class="service-price">R$ 45</div>
+                    <p class="service-description">Modelagem completa com toalha quente e produtos especiais. Duração: 30 min.</p>
+                    <a href="#orcamento" class="cta-button">Solicitar Orçamento</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Corte + Barba</h3>
+                    <div class="service-price">R$ 95</div>
+                    <p class="service-description">Combo completo com atendimento premium e produtos especiais. Duração: 1h10min.</p>
+                    <a href="#orcamento" class="cta-button">Solicitar Orçamento</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="galeria" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Transformações Reais</h2>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm0ZT9TMd9VLAhHBRiCoLwNIuZu1jpqUOAAg&s" alt="Corte Degradê">
+                    <div class="gallery-label">Corte Degradê</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvTWf8MeW6Xx3c2eKCKJ29zgZVjxm7JoxYbw&s" alt="Barba Completa">
+                    <div class="gallery-label">Barba Completa</div>
+                </div>
+                
+                <div class="gallery-item">
+                     <img src="https://images.unsplash.com/photo-1622288432450-277d0fef5ed6?auto=format&fit=crop&w=687&q=80" alt="Corte e Barba">
+                    <div class="gallery-label">Corte e Barba</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8izgEeGoT07L_DEy9ozVngGotFfG5w_Cbfw&s" alt="Design de Sobrancelha">
+                    <div class="gallery-label">Design de Sobrancelha</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="localizacao" class="location">
+        <div class="container">
+            <div class="section-title">
+                <h2>Localização & Horários</h2>
+            </div>
+            
+            <div class="location-flex">
+                <div class="map-container">
+                    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3842.8608466531205!2d-56.1015649!3d-15.599081900000009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db1928b57b8a1%3A0x6a4bb70689fbf896!2sMuseu%20do%20Morro%20Da%20Caixa%20D%E2%80%99%C3%81gua%20Velha!5e0!3m2!1spt-BR!2sbr!4v1758318308223!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                
+                <div class="location-info">
+                    <div class="info-block">
+                        <h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Endereço
+                        </h3>
+                        <p>Av. do CPA, 2000 - Morro da Caixa d'Água</p>
+                        <p>, Cuiabá - MT, 01310-100</p>
+                        <p>Próximo à AV.Issac Povoas</p>
+                    </div>
+                    
+                    <div class="info-block">
+                        <h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Horários
+                        </h3>
+                        <table class="hours-table">
+                            <tr>
+                                <td>Segunda-feira</td>
+                                <td>10h às 20h</td>
+                            </tr>
+                            <tr>
+                                <td>Terça-feira</td>
+                                <td>10h às 20h</td>
+                            </tr>
+                            <tr class="current-day">
+                                <td>Quarta-feira</td>
+                                <td>10h às 20h</td>
+                            </tr>
+                            <tr>
+                                <td>Quinta-feira</td>
+                                <td>10h às 20h</td>
+                            </tr>
+                            <tr>
+                                <td>Sexta-feira</td>
+                                <td>10h às 21h</td>
+                            </tr>
+                            <tr>
+                                <td>Sábado</td>
+                                <td>9h às 18h</td>
+                            </tr>
+                            <tr>
+                                <td>Domingo</td>
+                                <td>Fechado</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="info-block">
+                        <h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            Contato
+                        </h3>
+                        <p><strong>Telefone:</strong> (65) 3456-7890</p>
+                        <p><strong>WhatsApp:</strong> (65) 99272-5105</p>
+                        <p><strong>Email:</strong> contato@barbeariapremium.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="orcamento" class="budget">
+        <div class="container budget-container">
+            <div class="budget-title">
+                <h2>Solicite Seu Orçamento</h2>
+                <p>Preencha o formulário abaixo e receba um orçamento personalizado via WhatsApp</p>
+            </div>
+            
+            <form class="budget-form" id="budgetForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone/WhatsApp</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="service">Serviço Desejado</label>
+                        <select id="service" class="form-control" required>
+                            <option value="" disabled selected>Selecione um serviço</option>
+                            <option value="Corte Masculino">Corte Masculino - R$ 60</option>
+                            <option value="Barba">Barba - R$ 45</option>
+                            <option value="Corte + Barba">Corte + Barba - R$ 95</option>
+                            <option value="Outro">Outro (especificar na mensagem)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Data Preferencial</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensagem (Opcional)</label>
+                    <textarea id="message" class="form-control" placeholder="Descreva suas necessidades específicas..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">Solicitar Orçamento via WhatsApp</button>
+                
+                <div class="guarantee">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <span>Garantimos resposta em até 15 minutos durante o horário de funcionamento</span>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <svg width="50" height="50" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="5" fill="#e74c3c"/>
+                    <path d="M26 15H14V17H26V15Z" fill="white"/>
+                    <path d="M26 19H14V21H26V19Z" fill="white"/>
+                    <path d="M20 23H14V25H20V23Z" fill="white"/>
+                </svg>
+            </div>
+            
+            <div class="footer-contact">
+                <p><strong>Barbearia Premium</strong></p>
+                <p>Av. do CPA, 2000 - Morro da Caixa d'Água, Cuiabá - MT</p>
+                <p>Telefone: (65) 3456-7890 | WhatsApp: (65) 99272-5105</p>
+                <p>contato@barbeariapremium.com</p>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    </svg>
+                </a>
+                
+                <a href="#" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                    </svg>
+                </a>
+                
+                <a href="#" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.042-3.441.219-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.094.113.108.212.08.326-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.748-1.378 0 0-.599 2.282-.744 2.84-.282 1.084-1.064 2.456-1.549 3.235C9.584 23.815 10.77 24.001 12.017 24.001c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Barbearia Premium. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/5565992725105?text=Olá! Gostaria de solicitar um orçamento." class="whatsapp-float" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.042-3.441.219-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.094.113.108.212.08.326-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.748-1.378 0 0-.599 2.282-.744 2.84-.282 1.084-1.064 2.456-1.549 3.235C9.584 23.815 10.77 24.001 12.017 24.001c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+        </svg>
+    </a>
+    
+    <script>
+        document.getElementById('budgetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coletar dados do formulário
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const message = document.getElementById('message').value;
+            
+            // Formatar a data
+            const formattedDate = new Date(date).toLocaleDateString('pt-BR');
+            
+            // Criar mensagem para WhatsApp
+            let whatsappMessage = `Olá! Gostaria de solicitar um orçamento na Barbearia Premium.%0A%0A`;
+            whatsappMessage += `*Nome:* ${name}%0A`;
+            whatsappMessage += `*Telefone:* ${phone}%0A`;
+            whatsappMessage += `*Serviço:* ${service}%0A`;
+            whatsappMessage += `*Data Preferencial:* ${formattedDate}%0A`;
+            
+            if (message) {
+                whatsappMessage += `*Mensagem:* ${message}%0A`;
+            }
+            
+            // Número do salão (65 99272-5105) - código do Brasil: 55
+            const whatsappNumber = "5565992725105";
+            
+            // Redirecionar para WhatsApp
+            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+        });
+        
+        // Atualizar o dia atual na tabela de horários
+        const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+        const today = new Date().getDay();
+        const currentDayName = daysOfWeek[today];
+        
+        // Remover classe current-day de todas as linhas
+        document.querySelectorAll('.hours-table tr').forEach(row => {
+            row.classList.remove('current-day');
+        });
+        
+        // Adicionar classe current-day à linha correspondente ao dia atual
+        document.querySelectorAll('.hours-table tr').forEach(row => {
+            if (row.cells[0].textContent === currentDayName) {
+                row.classList.add('current-day');
+            }
+        });
+    </script>
+</body>
+</html>
